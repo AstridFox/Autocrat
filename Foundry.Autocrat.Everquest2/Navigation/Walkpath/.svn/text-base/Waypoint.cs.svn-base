@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Foundry.Autocrat.Geometry;
+
+namespace Foundry.Autocrat.Everquest2.Navigation.Walkpath {
+	public class Waypoint {
+		public Vector3 Destination { get; set; }
+		public bool JumpWhenReached { get; set; }
+	}
+}

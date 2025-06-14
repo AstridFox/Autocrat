@@ -1,0 +1,76 @@
+﻿<pointers xmlns='http://macrocrafter.com/pointers.xsd'>
+  <pointer name='Character Movement' address='011AAAD4'>
+    <offset name='Location' value='5C'>
+      <offset name='X Axis' value='F4' />
+      <offset name='Y Axis' value='FC' />
+      <offset name='Z Axis' value='F8' />
+    </offset>
+    <offset name='Speed' value='9C' />
+    <offset name='Toggle' value='54'>
+      <offset name='Running' value='5C' />
+    </offset>
+  </pointer>
+
+  <pointer name='Character Data' address='011AA8D0'>
+    <offset name='Struct' value='27a0'>
+      <offset name='Name' value='00' />
+      <offset name='Surname' value='73' />
+      <offset name='Current Health' value='88' />
+      <offset name='Max Health' value='8C' />
+      <offset name='Current Power' value='94' />
+      <offset name='Max Power' value='98' />
+    </offset>
+  </pointer>
+
+  <pointer name='Target Location' address='011AA8D0'> <!-- Same as Character Data above -->
+    <offset name='Spawn ID' value='5B24' />
+    <offset name='X Axis' value='5B28' />
+    <offset name='Z Axis' value='5B2C' />
+    <offset name='Y Axis' value='5B30' />
+    <offset name='Distance' value='5B34' />
+  </pointer>
+
+  <pointer name='Character Level' address='00FB3A55' />           <!-- Invalid -->
+  <pointer name='Cursor Icon ID' address='00F7E1D0' />            <!-- Invalid -->
+  <pointer name='Chat Window Input Pointer' address='011AA2F4' /> <!-- This will be 0 when not in focus, and a pointer when in focus. -->
+
+  <pointer name='Class Data' address='00FB836C'> <!-- Invalid -->
+    <offset name='Class Name' value='00' />
+  </pointer>
+  
+  <pointer name='Server Data' address='011AD710'>
+    <offset name='Server Name' value='00' />
+  </pointer>
+
+  <pointer name='Zone Data' address='011AD728'>
+    <offset name='Zone Name' value='00' />
+  </pointer>
+
+  <!-- + 110C8 -->
+  <pointer name='Camera And Movement' address='0112A98C'> 
+    <offset name='Zoom' value='24' /> <!-- Value is 35 at max range -->
+    <offset name='Autorun' value='AC' />
+    <offset name='Has Target' value='6C' />
+    <offset name='Fighting' value='46' />
+    <offset name='Camera Details' value='0760'>
+      <offset name='Camera Yaw' value='24' /> <!-- Max value is 75 -->
+      <offset name='Camera Pitch' value='28' />
+      <offset name='Character Heading' value='0100' />
+    </offset>
+  </pointer>
+
+  <pointer name='Target Data' address='0112AC80'>
+    <offset name='Health' value='016c' />
+    <offset name='Assist Health' value='0170' />
+    <offset name='Power' value='0174' />
+    <offset name='Level' value='017C' />
+    <offset name='Spawn ID' value='0184' />
+  </pointer>
+
+  <pointer name='Target Name Function Location' address='00400a00' />
+  <pointer name='PC Target Name Function' address='00473979'  /> <!-- 8b cd c6 44 24 5c 06 -->
+  <pointer name='NPC Target Name Function' address='004738A2' /> <!-- 8b cd c6 44 24 5c 09 -->
+  
+  <!-- 00460381 -->
+
+</pointers>

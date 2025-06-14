@@ -1,0 +1,52 @@
+9
+
+dir
+64
+https://angel1.projectlocker.com/MacrocrafterDotCom/CodeBase/svn/Foundry.Autocrat/Foundry.Autocrat/Workflows/Events
+https://angel1.projectlocker.com/MacrocrafterDotCom/CodeBase/svn
+
+
+
+2009-01-16T20:24:40.467597Z
+22
+erikforbes
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2595dab3-08aa-4f8d-a115-464ac35e37c6
+
+WorkItemEventArgs.cs
+file
+
+
+
+
+2009-01-17T10:34:34.862459Z
+e4da3e7cdb40b77d7559e085564f8248
+2009-01-16T01:22:40.732689Z
+21
+erikforbes
+
+WorkflowRunnerEventArgs.cs
+file
+
+
+
+
+2009-01-17T10:34:34.862459Z
+77bc3627adaae894c83d510b10f8f732
+2009-01-16T20:24:40.467597Z
+22
+erikforbes
+

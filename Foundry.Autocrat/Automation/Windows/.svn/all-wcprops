@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/50/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows
+END
+Computer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/13/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Computer.cs
+END
+Keyboard.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/21/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Keyboard.cs
+END
+InputHook.cs
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook.cs
+END
+Hotkey.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/50/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Hotkey.cs
+END
+Display.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/41/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Display.cs
+END
+Window.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/21/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Window.cs
+END
+Mouse.cs
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/68/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/Mouse.cs
+END

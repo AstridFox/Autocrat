@@ -1,0 +1,218 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Foundry.Autocrat.Memory;
+using Foundry.Autocrat.Extensions.Memory;
+using System.Xml.Linq;
+using System.Diagnostics;
+using Foundry.Autocrat.Geometry;
+
+using Foundry.Autocrat.Extensions.Math;
+
+namespace Foundry.Autocrat.Everquest2.Memory {
+	public class Eq2PointerLibrary : PointerLibrary {
+		public Process Eq2Process { get; set; }
+
+		public Eq2PointerLibrary(Process eq2Process, XDocument pointerDocument)
+			: base(pointerDocument) {
+			Eq2Process = eq2Process;
+		}
+
+		#region Character
+
+		public virtual Vector3 CharacterLocation {
+			get { return Read<Vector3>(Eq2Process, "Character Movement/Location/X Axis"); }
+			set { Write(Eq2Process, "Character Movement/Location/X Axis", value); }
+		}
+
+		public virtual float CharacterX {
+			get { return Read<float>(Eq2Process, "Character Movement/Location/X Axis"); }
+			set { Write(Eq2Process, "Character Movement/Location/X Axis", value); }
+		}
+
+		public virtual float CharacterY {
+			get { return Read<float>(Eq2Process, "Character Movement/Location/Y Axis"); }
+			set { Write(Eq2Process, "Character Movement/Location/Y Axis", value); }
+		}
+
+		public virtual float CharacterZ {
+			get { return Read<float>(Eq2Process, "Character Movement/Location/Z Axis"); }
+			set { Write(Eq2Process, "Character Movement/Location/Z Axis", value); }
+		}
+
+		public virtual float CharacterSpeed {
+			get {
+				var addr = this.Resolve(Eq2Process, "Character Movement/Speed");
+				return Eq2Process.Read<float>(addr);
+
+				//return Read<float>(Eq2Process, "Character Movement/Speed"); 
+
+
+			}
+			set { Write(Eq2Process, "Character Movement/Speed", value); }
+		}
+
+		public virtual bool CharacterRunning {
+			get { return Read<byte>(Eq2Process, "Character Movement/Toggle/Running") == 1; }
+			set { Write(Eq2Process, "Character Movement/Toggle/Running", value ? 1 : 0); }
+		}
+
+		public virtual string CharacterName {
+			get { return ReadString(Eq2Process, "Character Data/Struct/Name", 255, Encoding.ASCII, true); }
+		}
+
+		public virtual string CharacterSurname {
+			get { return ReadString(Eq2Process, "Character Data/Struct/Surname", 255, Encoding.ASCII, true); }
+		}
+
+		public virtual int CharacterCurrentHealth {
+			get { return Read<int>(Eq2Process, "Character Data/Struct/Current Health"); }
+		}
+
+		public virtual int CharacterMaxHealth {
+			get { return Read<int>(Eq2Process, "Character Data/Struct/Max Health"); }
+		}
+
+		public virtual int CharacterCurrentPower {
+			get { return Read<int>(Eq2Process, "Character Data/Struct/Current Power"); }
+		}
+
+		public virtual int CharacterMaxPower {
+			get { return Read<int>(Eq2Process, "Character Data/Struct/Max Power"); }
+		}
+
+		public virtual bool CharacterHasTarget {
+			get { return TargetSpawnId != -1; }
+		}
+
+		public virtual int CharacterLevel {
+			get { return (int)Read<byte>(Eq2Process, "Character Level"); }
+		}
+
+		public virtual string CharacterClassName {
+			get { return ReadString(Eq2Process, "Class Data/Class Name", 255, Encoding.ASCII, true); }
+		}
+
+		public virtual string CharacterServerName {
+			get { return ReadString(Eq2Process, "Server Data/Server Name", 255, Encoding.ASCII, true); }
+		}
+
+		public virtual string CharacterZoneName {
+			get { return ReadString(Eq2Process, "Zone Data/Zone Name", 255, Encoding.ASCII, true); }
+		}
+
+		public virtual bool CharacterIsAutoRunning {
+			get {
+                var x = Resolve(Eq2Process, "Camera And Movement/Autorun");
+                return Read<byte>(Eq2Process, "Camera And Movement/Autorun") == 1;
+            
+            }
+			set { Write(Eq2Process, "Camera And Movement/Autorun", value ? 1 : 0); }
+		}
+
+		public virtual bool CharacterIsFighting {
+			get { return Read<byte>(Eq2Process, "Camera And Movement/Fighting") == 1; }
+		}
+
+		public virtual float CharacterHeading {
+			get { return Read<float>(Eq2Process, "Camera And Movement/Camera Details/Character Heading").Wrap(360, false); }
+			set { Write(Eq2Process, "Camera And Movement/Camera Details/Character Heading", value.Wrap(360, false)); }
+		}
+
+		#endregion
+
+		#region Target
+
+		public virtual int TargetSpawnId {
+			get { return Read<int>(Eq2Process, "Target Data/Spawn ID"); }
+		}
+
+		public virtual Vector3 TargetLocation {
+			get { return Read<Vector3>(Eq2Process, "Target Location/X Axis"); }
+		}
+
+		public virtual float TargetDistance {
+			get { return Read<float>(Eq2Process, "Target Location/Distance"); }
+		}
+
+		public virtual float TargetX {
+			get { return Read<float>(Eq2Process, "Target Location/X Axis"); }
+		}
+
+		public virtual float TargetY {
+			get { return Read<float>(Eq2Process, "Target Location/Y Axis"); }
+		}
+
+		public virtual float TargetZ {
+			get { return Read<float>(Eq2Process, "Target Location/Z Axis"); }
+		}
+
+		public virtual int TargetHealth {
+			get { return (int)Read<byte>(Eq2Process, "Target Data/Health"); }
+		}
+
+		public virtual int TargetAssistHealth {
+			get { return (int)Read<byte>(Eq2Process, "Target Data/Assist Health"); }
+		}
+
+		public virtual int TargetPower {
+			get { return (int)Read<byte>(Eq2Process, "Target Data/Power"); }
+		}
+
+		public virtual int TargetLevel {
+			get { return (int)Read<byte>(Eq2Process, "Target Data/Level"); }
+		}
+
+		#endregion
+
+		#region Eq2
+
+		public virtual bool Eq2HasChatWindowFocus {
+			get { return Read<int>(Eq2Process, "Chat Window Input Pointer") != 0; }
+		}
+
+		public virtual int Eq2CursorIconId {
+			get { return Read<int>(Eq2Process, "Cursor Icon ID"); }
+		}
+
+		#endregion
+
+		#region Camera
+
+		public virtual float CameraZoom {
+			get { return Read<float>(Eq2Process, "Camera And Movement/Zoom"); }
+			set { Write(Eq2Process, "Camera And Movement/Zoom", value); }
+		}
+
+		public virtual float CameraYaw {
+			get { return Read<float>(Eq2Process, "Camera And Movement/Camera Details/Camera Yaw").Wrap(360, false); }
+			set { Write(Eq2Process, "Camera And Movement/Camera Details/Camera Yaw", value.Wrap(360, false)); }
+		}
+
+		public virtual float CameraPitch {
+			get { return Read<float>(Eq2Process, "Camera And Movement/Camera Details/Camera Pitch").Wrap(360, false); }
+			set { Write(Eq2Process, "Camera And Movement/Camera Details/Camera Pitch", value.Wrap(360, false)); }
+		}
+
+		#endregion
+
+		#region Autocrat
+
+		public virtual IntPtr AutocratTargetNameFunction {
+			get { return Resolve(Eq2Process, "Target Name Function Location"); }
+		}
+
+		public virtual IntPtr AutocratPCTargetFunction {
+			get { return Resolve(Eq2Process, "PC Target Name Function"); }
+		}
+
+		public virtual IntPtr AutocratNPCTargetFunction {
+			get { return Resolve(Eq2Process, "NPC Target Name Function"); }
+		}
+
+		#endregion
+
+	}
+}

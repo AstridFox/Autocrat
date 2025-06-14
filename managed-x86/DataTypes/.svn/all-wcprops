@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes
+END
+X86Address.cs
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86Address.cs
+END
+X86ShiftOpCode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86ShiftOpCode.cs
+END
+X86Register32.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86Register32.cs
+END
+X86Register16.cs
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86Register16.cs
+END
+X86Register8.cs
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86Register8.cs
+END
+X86Label.cs
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86Label.cs
+END
+X86ConditionCode.cs
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/57/Foundry.Autocrat/managed-x86/DataTypes/X86ConditionCode.cs
+END

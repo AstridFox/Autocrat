@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Foundry.Autocrat.Extensions.Math;
+
+namespace Foundry.Autocrat.Geometry {
+	public struct Vector {
+		public static Vector Zero = new Vector(0, 0);
+		public static Vector MinValue = new Vector(float.MinValue, float.MinValue);
+		public static Vector MaxValue = new Vector(float.MaxValue, float.MaxValue);
+		public static Vector NaV = new Vector(float.NaN, float.NaN);
+
+		private readonly float _x;
+		private readonly float _y;
+
+		public float X {
+			get { return _x; }
+		}
+		public float Y {
+			get { return _y; }
+		}
+
+		public Vector(float x, float y) {
+			_x = x;
+			_y = y;
+		}
+
+		public static bool IsNaV(Vector a) {
+			return
+				float.IsNaN(a.X) &&
+				float.IsNaN(a.Y);
+		}
+
+		public override bool Equals(object obj) {
+			if (!(obj is Vector)) return false;
+			Vector v2 = (Vector)obj;
+
+			return this == v2;
+		}
+
+		public override int GetHashCode() {
+			unchecked { return _x.GetHashCode() ^ _y.GetHashCode(); }
+		}
+
+		public static bool operator ==(Vector a, Vector b){
+			return a._x == b._x && a._y == b._y;
+		}
+
+		public static bool operator !=(Vector a, Vector b) {
+			return !(a == b);
+		}
+
+		public static Vector operator +(Vector a, Vector b) {
+			return new Vector(a.X + b.X, a.Y + b.Y);
+		}
+
+		public static Vector operator -(Vector a, Vector b) {
+			return new Vector(a.X - b.X, a.Y - b.Y);
+		}
+
+		public static implicit operator Vector(Vector3 o) {
+			return new Vector(o.X, o.Y);
+		}
+
+		public override string ToString() {
+			return ToString(2);
+		}
+
+		public string ToString(int precision) {
+			return string.Format("[X:{0:F" + precision.ToString() + "}] [Y:{1:F" + precision.ToString() + "}]", X, Y);
+		}
+
+		public float DistanceTo(Vector other) {
+			float dx = Math.Abs(this.X - other.X);
+			float dy = Math.Abs(this.Y - other.Y);
+
+			return (float)Math.Sqrt(dx * dx + dy * dy);
+		}
+
+        public float HeadingTo(Vector destination)
+        {
+			Vector dT = new Vector(destination.X - this.X, destination.Y - this.Y);
+
+			float heading = (90 - (float)(Math.Atan2(dT.Y, dT.X) * (180 / 3.1415927))).Wrap(360, false);
+            return heading;
+        }
+
+	}
+
+}

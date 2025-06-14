@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/45/Foundry.Autocrat/Foundry.Autocrat/Extensions
+END
+DrawingExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/9/Foundry.Autocrat/Foundry.Autocrat/Extensions/DrawingExtensions.cs
+END
+FluentExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/14/Foundry.Autocrat/Foundry.Autocrat/Extensions/FluentExtensions.cs
+END
+EventExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/20/Foundry.Autocrat/Foundry.Autocrat/Extensions/EventExtensions.cs
+END
+FormsExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/9/Foundry.Autocrat/Foundry.Autocrat/Extensions/FormsExtensions.cs
+END
+MathExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/42/Foundry.Autocrat/Foundry.Autocrat/Extensions/MathExtensions.cs
+END
+ParseExtensions.cs
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/45/Foundry.Autocrat/Foundry.Autocrat/Extensions/ParseExtensions.cs
+END

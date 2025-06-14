@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8047107A-E0D3-4484-8A9B-AF8DE698A28E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foundry.Autocrat.Everquest2</RootNamespace>
+    <AssemblyName>Foundry.Autocrat.Everquest2</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abilities\Ability.cs" />
+    <Compile Include="Abilities\AbilityChain.cs" />
+    <Compile Include="Abilities\Serialization\AbilityChainSerializer.cs" />
+    <Compile Include="Abilities\UI\AbilityChainDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abilities\UI\AbilityChainDialog.Designer.cs">
+      <DependentUpon>AbilityChainDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abilities\UI\AbilityEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abilities\UI\AbilityEditorDialog.Designer.cs">
+      <DependentUpon>AbilityEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abilities\UI\AbilitySelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abilities\UI\AbilitySelector.Designer.cs">
+      <DependentUpon>AbilitySelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogFiles\LogService.cs" />
+    <Compile Include="Memory\Eq2PointerLibrary.cs" />
+    <Compile Include="Memory\TargetNameService.cs" />
+    <Compile Include="Navigation\Walkpath\Serialization\WalkpathSerializer.cs" />
+    <Compile Include="Navigation\Walkpath\UI\RecordPathDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\UI\RecordPathDialog.Designer.cs">
+      <DependentUpon>RecordPathDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\UI\RenamePathDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\UI\RenamePathDialog.Designer.cs">
+      <DependentUpon>RenamePathDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\UI\WalkpathManagerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\UI\WalkpathManagerDialog.Designer.cs">
+      <DependentUpon>WalkpathManagerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navigation\Walkpath\Walkpath.cs" />
+    <Compile Include="Navigation\Walkpath\WalkpathNavigationContext.cs" />
+    <Compile Include="Navigation\Walkpath\WalkpathNavigationWorkflow.cs" />
+    <Compile Include="Navigation\Walkpath\Waypoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foundry.Autocrat\Foundry.Autocrat.csproj">
+      <Project>{4D678C18-5CF4-4E38-95CA-F7B0E25CEB26}</Project>
+      <Name>Foundry.Autocrat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\managed-x86\Managed.X86.csproj">
+      <Project>{1AAF4B4D-2986-4F56-BEBC-EEC6EA0EE435}</Project>
+      <Name>Managed.X86</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Eq2Pointers.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Abilities\UI\AbilityChainDialog.resx">
+      <DependentUpon>AbilityChainDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abilities\UI\AbilityEditorDialog.resx">
+      <DependentUpon>AbilityEditorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\Walkpath\UI\RecordPathDialog.resx">
+      <DependentUpon>RecordPathDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\Walkpath\UI\RenamePathDialog.resx">
+      <DependentUpon>RenamePathDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navigation\Walkpath\UI\WalkpathManagerDialog.resx">
+      <DependentUpon>WalkpathManagerDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

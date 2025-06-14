@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Foundry.Autocrat.Workflows {
+	public abstract class WorkItem {
+<<<<<<< .mine
+		public abstract void Execute(Workflow workflow);
+=======
+		public abstract void Execute();
+>>>>>>> .r24
+	}
+}

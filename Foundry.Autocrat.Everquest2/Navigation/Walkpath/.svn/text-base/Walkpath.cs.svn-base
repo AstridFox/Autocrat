@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Foundry.Autocrat.Everquest2.Navigation.Walkpath {
+	public class Walkpath {
+		public string WalkpathName { get; set; }
+		public WalkpathConfiguration Configuration { get; set; }
+		public List<Waypoint> Waypoints { get; set; }
+	}
+}

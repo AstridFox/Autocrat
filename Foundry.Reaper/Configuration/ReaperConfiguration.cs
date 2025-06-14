@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Diagnostics;
+using Foundry.Autocrat.Everquest2.Memory;
+using Foundry.Autocrat.Automation.Windows;
+using Foundry.Reaper.Services;
+using Foundry.Autocrat.Everquest2.Navigation.Walkpath;
+using Foundry.Autocrat.Everquest2;
+
+namespace Foundry.Reaper.Configuration {
+	public class ReaperConfiguration {
+		// Framework Services
+		public Process Eq2Process { get; set; }
+		public Window Eq2Window { get; set; }
+		public Keyboard Keyboard { get; set; }
+		public Mouse Mouse { get; set; }
+		public Random Random { get; set; }
+		
+		// Enhanced Services
+		public Eq2PointerLibrary Eq2PointerLibrary { get; set; }
+		public TargetNameService TargetNameService { get; set; }
+		public SpawnIgnoreService IgnoredSpawns { get; set; }
+		public LogService LogService { get; set; }
+
+		// Base Configuration
+		public int NumberOfRuns { get; set; }
+
+		// Targetting
+		public Keyboard.Keys TargetSelectKey { get; set; }
+		public Keyboard.Keys PlayerSelectKey { get; set; }
+		public int MaxTargetReacquisitionAttempts { get; set; }
+		public int TargetSelectDelay { get; set; }
+		public bool DoPlayerDetection { get; set; }
+		public float PlayerDetectRange { get; set; }
+		public float MaxActionableTargetDistance { get; set; }
+		public float MaxActionableTargetHeightVariance { get; set; }
+
+		// Navigation Configuration
+		public List<Walkpath> WalkpathPlaylist { get; set; }
+		public Keyboard.Keys JumpKey { get; set; }
+		public float NavigationAccuracyThreshold { get; set; }
+		public bool TeleportToWaypointUponReaching { get; set; }
+		public bool BoostSpeed { get; set; }
+		public float CombatSpeed { get; set; }
+		public float RunSpeed { get; set; }
+		
+		// Humanization Active Settings
+		public bool Delaying { get; set; }
+		public DateTime ThisDelayEnds { get; set; }
+		public DateTime NextDelayStart { get; set; }
+
+		// Humanization Configuration
+		public TimeSpan MinDelay { get; set; }
+		public TimeSpan MaxDelay { get; set; }
+		public TimeSpan MinTimeBetweenDelays { get; set; }
+		public TimeSpan MaxTimeBetweenDelays { get; set; }
+
+		// Harvesting Configuration
+		public bool HarvestingAllowed { get; set; }
+		public List<string> HarvestingItems { get; set; }
+		public int HarvestingAttempts { get; set; }
+		public Keyboard.Keys HarvestingKey { get; set; }
+		public int HarvestAttemptDelay { get; set; }
+		public bool AllowHarvestingListSubstring { get; set; }
+
+		// Hunting Configuration
+		public bool HuntingAllowed { get; set; }
+		public List<string> HuntingItems { get; set; }
+		public bool AllowHuntingListSubstring { get; set; }
+
+	}
+}

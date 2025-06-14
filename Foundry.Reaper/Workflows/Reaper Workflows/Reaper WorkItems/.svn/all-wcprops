@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/59/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems
+END
+DelayCheckWorkItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/59/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/DelayCheckWorkItem.cs
+END
+DetermineIsActionableTarget.cs
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/68/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/DetermineIsActionableTarget.cs
+END
+StopWalkingWorkItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/68/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/StopWalkingWorkItem.cs
+END
+RetargetSpawnIDWorkItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/59/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/RetargetSpawnIDWorkItem.cs
+END
+PlayerDetectWorkItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/59/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/PlayerDetectWorkItem.cs
+END
+TargetWorkItem.cs
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/59/Foundry.Autocrat/Foundry.Reaper/Workflows/Reaper%20Workflows/Reaper%20WorkItems/TargetWorkItem.cs
+END

@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Foundry.Autocrat.Extensions.Fluent;
+using Foundry.Autocrat.Extensions.Events;
+
+namespace Foundry.Autocrat.Workflows {
+	public class WorkflowRunner {
+		private Action<Workflow> _asyncRunner;
+		public WorkflowRunner() {
+			_asyncRunner = w => RunWorkflow(w);
+		}
+
+		public void RunWorkflow(Workflow workflow) {
+			OnBeforeWorkflowRun(this, new WorkflowRunnerEventArgs(workflow));
+
+			foreach (var wi in workflow) {
+				if (OnBeforeWorkItemRun(this, new WorkItemEventArgs(workflow, wi))) return;
+				if (wi != null) wi.Execute();
+				if (OnAfterWorkItemRun(this, new WorkItemEventArgs(workflow, wi))) return;
+			}
+
+			OnAfterWorkflowRun(this, new WorkflowRunnerEventArgs(workflow));
+		}
+
+		public IAsyncResult BeginRunWorkflow(Workflow workflow) {
+			return _asyncRunner.BeginInvoke(workflow, null, workflow);
+		}
+
+		public Workflow EndRunWorkflow(IAsyncResult ar) {
+			_asyncRunner.EndInvoke(ar);
+			return (Workflow)ar.AsyncState;
+		}
+
+		protected bool OnBeforeWorkItemRun(object sender, WorkItemEventArgs e) {
+			BeforeWorkItemRun.SafeEvent(sender, e);
+			return e.Cancel;
+		}
+		protected bool OnAfterWorkItemRun(object sender, WorkItemEventArgs e) {
+			AfterWorkItemRun.SafeEvent(sender, e);
+			return e.Cancel;
+		}
+
+		protected void OnBeforeWorkflowRun(object sender, WorkflowRunnerEventArgs e) {
+			BeforeWorkflowRun.SafeEvent(sender, e);
+		}
+
+		protected void OnAfterWorkflowRun(object sender, WorkflowRunnerEventArgs e) {
+			AfterWorkflowRun.SafeEvent(sender, e);
+		}
+
+		public event EventHandler<WorkItemEventArgs> BeforeWorkItemRun;
+		public event EventHandler<WorkItemEventArgs> AfterWorkItemRun;
+		public event EventHandler<WorkflowRunnerEventArgs> BeforeWorkflowRun;
+		public event EventHandler<WorkflowRunnerEventArgs> AfterWorkflowRun;
+	}
+}

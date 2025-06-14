@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook
+END
+HookManager.cs
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook/HookManager.cs
+END
+HookManager.Structures.cs
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook/HookManager.Structures.cs
+END
+HookManager.Windows.cs
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook/HookManager.Windows.cs
+END
+MouseEventExtArgs.cs
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook/MouseEventExtArgs.cs
+END
+HookManager.Callbacks.cs
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/MacrocrafterDotCom/CodeBase/svn/!svn/ver/43/Foundry.Autocrat/Foundry.Autocrat/Automation/Windows/InputHook/HookManager.Callbacks.cs
+END

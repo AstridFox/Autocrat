@@ -1,0 +1,260 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Foundry.Autocrat.Workflows;
+using Foundry.Reaper.Configuration;
+using Foundry.Autocrat.Geometry;
+
+namespace Foundry.Reaper.Workflows {
+    public class ReaperWorkflow : Workflow {
+
+        public ReaperConfiguration Configuration { private get; set; }
+
+        protected override IEnumerable<WorkItem> WorkFlow() {
+            if (Configuration == null) yield break;
+
+            var target = new TargetWorkItem { Configuration = Configuration };
+            var delayCheck = new DelayCheckWorkItem { Configuration = Configuration };
+
+            for (int i = 0; i < Configuration.NumberOfRuns; i++) {
+                var navWorkflow = new NavigationWorkflow { Configuration = Configuration };
+
+                // Stuck Workflow Handling
+                // if (stuckWorkflow.WasStuck) navWorkflow.NavigationInterrupted = true;
+                // if (stuckWorkflow.HopelesslyStuck) yield break;
+
+                foreach (var navItem in navWorkflow) {
+                    yield return delayCheck;
+                    while (Configuration.Delaying) yield return delayCheck;
+
+                    yield return navItem;
+                    yield return target;
+
+<<<<<<< .mine
+                    if (target.HasTarget) {
+                        var diat = new DetermineIsActionableTarget {
+                            Configuration = Configuration,
+                            SpawnId = target.TargetSpawnId,
+                            Location = target.TargetLocation,
+                            Name = target.TargetName
+                        };
+                        yield return diat;
+=======
+						if (target.HasTarget) {
+							var diat = new DetermineIsActionableTarget {
+								Configuration = Configuration,
+								SpawnId = target.TargetSpawnId,
+								Location = target.TargetLocation,
+								Name = target.TargetName
+							};
+							yield return diat;
+>>>>>>> .r57
+
+                        bool harvestable = diat.IsHarvestable;
+                        bool huntable = diat.IsHuntable;
+
+<<<<<<< .mine
+                        if (harvestable || huntable) {
+                            Workflow walkWorkflow = null; // Configuration.WorkflowFactory.CreateWalkToTargetWorkflow();
+                            var destination = target.TargetLocation;
+                            //walkWorkflow.Destination = destination;
+=======
+							if (harvestable || huntable) {
+								Workflow walkWorkflow = null; // TODO: Create Walk Workflow Here
+								var destination = target.TargetLocation;
+								//walkWorkflow.Destination = destination;
+>>>>>>> .r57
+
+                            var playerTarget = new TargetWorkItem { Configuration = Configuration };
+                            bool playerDetected = false;
+
+                            foreach (var walkItem in walkWorkflow) {
+                                yield return delayCheck;
+                                while (Configuration.Delaying) yield return delayCheck;
+
+                                // Stuck Workflow Handling
+                                // if (stuckWorkflow.WasStuck) walkWorkflow.NavigationInterrupted = true;
+                                // if (stuckWorkflow.HopelesslyStuck) yield break;
+
+<<<<<<< .mine
+                                // Ensure our node or mob isn't being taken by another player.
+                                // Note: this only works on non-pvp servers; pvp servers don't have a player-select key
+                                if (Configuration.DoPlayerDetection) {
+                                    yield return playerTarget;
+=======
+										if (playerTarget.HasTarget) {
+											var playerDetectWorkItem = new PlayerDetectWorkItem {
+												Destination = destination,
+												PlayerLocation = playerTarget.TargetLocation,
+												Range = Configuration.PlayerDetectRange
+											};
+											yield return playerDetectWorkItem;
+>>>>>>> .r57
+
+<<<<<<< .mine
+                                    if (playerTarget.HasTarget) {
+                                        var playerDetectWorkItem = new PlayerDetectWorkItem {
+                                            Destination = destination,
+                                            PlayerLocation = playerTarget.TargetLocation
+                                        };
+                                        yield return playerDetectWorkItem;
+=======
+											if (playerDetectWorkItem.PlayerTooClose) {
+												// Another player is too close to our target for comfort.
+												playerDetected = true;
+												break;
+											}
+										}
+									}
+>>>>>>> .r57
+
+                                        if (playerDetectWorkItem.PlayerTooClose) {
+                                            // Another player is too close to our target for comfort.
+                                            playerDetected = true;
+                                        }
+                                    }
+                                }
+
+                                yield return walkItem;
+
+<<<<<<< .mine
+                            }
+=======
+								if (!playerDetected /* && walkWorkflow.ReachedDestination */) {
+									// Now we need to ensure we've got the right spawn ID targetted
+									var retarget = new RetargetSpawnIDWorkItem {
+										Configuration = Configuration,
+										TargetSpawnId = target.TargetSpawnId
+									};
+>>>>>>> .r57
+
+                            bool troubleWithTarget = false;
+
+<<<<<<< .mine
+                            if (!playerDetected /* && walkWorkflow.ReachedDestination */) {
+                                // Now we need to ensure we've got the right spawn ID targetted
+                                var retarget = new RetargetSpawnIDWorkItem {
+                                    Configuration = Configuration,
+                                    TargetSpawnId = target.TargetSpawnId
+                                };
+
+=======
+									if (retarget.ReacquiredTarget) {
+>>>>>>> .r57
+<<<<<<< .mine
+                                for (int j = 0; j < Configuration.MaxTargetReacquisitionAttempts; j++) {
+                                    yield return retarget;
+                                    if (retarget.ReacquiredTarget) break;
+                                }
+=======
+										// Now we utilize our target.
+										Workflow hWorkflow = null;
+										if (harvestable) hWorkflow = new HarvestWorkflow {
+											Configuration = Configuration,
+											NodeSpawnId = target.TargetSpawnId
+										};
+>>>>>>> .r57
+
+<<<<<<< .mine
+                                if (retarget.ReacquiredTarget) {
+                                    bool hWorkflowSuccess = false;
+=======
+										if (huntable) hWorkflow = null;// TODO: Create Hunter Workflow Here
+>>>>>>> .r57
+
+                                    // Now we utilize our target.
+                                    Workflow hWorkflow = null;
+                                    if (harvestable) hWorkflow = new HarvestWorkflow {
+                                        Configuration = Configuration,
+                                        NodeSpawnId = target.TargetSpawnId,
+                                        SuccessFlag = () => hWorkflowSuccess = true
+                                    };
+
+<<<<<<< .mine
+                                    if (huntable) hWorkflow = null;// Configuration.WorkflowFactory.CreateHunterWorkflow();
+=======
+										troubleWithTarget = !((ISuccessfulWorkflow)hWorkflow).Successful;
+									}
+									else {
+										troubleWithTarget = true;
+									}
+								}
+								else {
+									troubleWithTarget = true;
+								}
+>>>>>>> .r57
+
+<<<<<<< .mine
+                                    foreach (var hItem in hWorkflow) yield return hItem;
+=======
+								if (troubleWithTarget) {
+									// Ignore the node for 5 minutes by default.
+									Configuration.IgnoredSpawns.Ignore(target.TargetSpawnId, TimeSpan.FromMinutes(5));
+								}
+>>>>>>> .r57
+
+<<<<<<< .mine
+                                    troubleWithTarget = !hWorkflowSuccess;
+                                } else {
+                                    troubleWithTarget = true;
+                                }
+                            } else {
+                                troubleWithTarget = true;
+                            }
+=======
+								if (playerDetected) {
+									// Ignore the node for 1 minute by default.
+									Configuration.IgnoredSpawns.Ignore(target.TargetSpawnId, TimeSpan.FromMinutes(1));
+								}
+>>>>>>> .r57
+
+                            if (troubleWithTarget) {
+                                // We had some sort of trouble with our target.
+                                // Log the problem, then deal with it.
+                            }
+
+                            if (playerDetected) {
+                                // We detected a player at the site of the node.
+                                // Log the problem, then deal with it.
+                            }
+
+                            target = new TargetWorkItem { Configuration = Configuration };
+
+                            // Navigation was interrupted by the WalkWorkflow, so we need to let our
+                            // navigation workflow know. It should include logic that gets itself
+                            // back on track after an interruption.
+                            navWorkflow.NavigationInterrupted = true;
+                        }
+
+                    }
+                }
+            }
+
+            yield break;
+        }
+
+<<<<<<< .mine
+    }
+=======
+		private bool IsHuntable(int spawnID, Vector3 location, string name) {
+			// Perform additional checks based on spawn ID and location to determine if this
+			// item is on any ignore lists.
+
+			if (!Configuration.HuntingAllowed) return false;
+
+			if (Configuration.AllowHuntingListSubstring) {
+				foreach (var item in Configuration.HuntingItems) {
+					if (name.ToLowerInvariant().Contains(item.ToLowerInvariant())) return true;
+				}
+			}
+			else {
+				return Configuration.HuntingItems.Contains(name, StringComparer.InvariantCultureIgnoreCase);
+			}
+
+			return false;
+		}
+
+	}
+>>>>>>> .r57
+}
